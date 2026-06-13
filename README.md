@@ -24,6 +24,9 @@ This project is a React-based authentication application built using React, Vite
 
 ## Project Structure
 
+## Project Structure
+
+```text
 src/
 ├── components/
 │   └── ProtectedRoute.jsx
@@ -37,6 +40,7 @@ src/
 ├── main.jsx
 ├── index.css
 └── App.css
+```
 
 ## Installation
 

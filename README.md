@@ -1,16 +1,99 @@
-# React + Vite
+# Celebrare React Authentication Assignment
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Overview
 
-Currently, two official plugins are available:
+This project is a React-based authentication application built using React, Vite, Tailwind CSS, Firebase Authentication, and React Router. It implements Google Sign-In, Protected Routes, Session Persistence using Local Storage, and TTL (Time To Live) based session expiration.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## Features
 
-## React Compiler
+* Google Authentication using Firebase
+* Protected Dashboard Route
+* User Session Persistence using Local Storage
+* Session Restore after Page Refresh
+* TTL (24 Hours) for User Session
+* Logout Functionality
+* Responsive UI with Tailwind CSS
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Tech Stack
 
-## Expanding the ESLint configuration
+* React
+* Vite
+* Tailwind CSS
+* Firebase Authentication
+* React Router DOM
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## Project Structure
+
+src/
+├── components/
+│   └── ProtectedRoute.jsx
+│
+├── pages/
+│   ├── Login.jsx
+│   └── Dashboard.jsx
+│
+├── firebase.js
+├── App.jsx
+├── main.jsx
+├── index.css
+└── App.css
+
+## Installation
+
+Clone the repository:
+
+git clone <repository-url>
+
+Navigate to project directory:
+
+cd celebrare
+
+Install dependencies:
+
+npm install
+
+Start development server:
+
+npm run dev
+
+## Authentication Flow
+
+1. User clicks "Login with Google".
+2. Firebase authenticates the user.
+3. User information is stored in Local Storage.
+4. A TTL of 24 hours is assigned to the session.
+5. User is redirected to the Dashboard.
+6. Protected Routes ensure only authenticated users can access restricted pages.
+7. Expired sessions are automatically invalidated.
+
+## Session Management
+
+User data is stored in Local Storage with an expiry timestamp.
+
+Example:
+
+{
+"name": "User Name",
+"email": "[user@example.com](mailto:user@example.com)",
+"photo": "profile-image-url",
+"expiry": "24-hour timestamp"
+}
+
+When the expiry time is reached, the user is automatically redirected to the login page.
+
+## Protected Routes
+
+Protected Routes prevent unauthorized users from accessing the dashboard. If a valid session is not found, users are redirected to the login page.
+
+## Demo Features
+
+* Google Login
+* Dashboard Access
+* Local Storage Session Persistence
+* Session Restore on Refresh
+* Logout Functionality
+* TTL-Based Session Expiration
+
+## Author
+
+Amit Khatri

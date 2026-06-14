@@ -1,9 +1,12 @@
 import { GoogleAuthProvider, signInWithPopup } from "firebase/auth";
 import { auth } from "../firebase";
 import { useNavigate } from "react-router-dom";
+import { useAuth } from "../context/AuthContext";
 
 function Login() {
   const navigate = useNavigate();
+
+  const { login } = useAuth();
 
   const handleLogin = async () => {
     try {
@@ -20,9 +23,15 @@ function Login() {
         expiry: Date.now() + 24 * 60 * 60 * 1000,
       };
 
-      localStorage.setItem("user", JSON.stringify(userData));
+      localStorage.setItem(
+        "user",
+        JSON.stringify(userData)
+      );
+
+      login(userData);
 
       navigate("/dashboard");
+
     } catch (error) {
       console.log(error);
     }
